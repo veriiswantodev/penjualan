@@ -41,7 +41,7 @@ class SuplierController extends Controller
             'telepon' => 'required|numeric',
             'alamat' => 'required'
         ]);
-        $pembeli = Suplier::create($request->all());
+        $suplier = Suplier::create($request->all());
 
         return redirect('suplier',)->with('sukses', 'Data Berhasil disimpan!');
     }

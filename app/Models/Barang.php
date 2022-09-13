@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Suplier;
 use App\Models\Kategori;
+use App\Models\Pembelian;
 
 class Barang extends Model
 {
@@ -21,5 +22,9 @@ class Barang extends Model
 
     public function kategori(){
         return $this->belongsTo(kategori::class);
+    }
+
+    public function pembelian(){
+        return $this->hasMany(Pembelian::class);
     }
 }
