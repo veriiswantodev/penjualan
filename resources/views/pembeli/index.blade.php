@@ -27,16 +27,18 @@
       </thead>
 
       <tbody>
+        @foreach ($pembeli as $item)   
         <tr>
-          <td>1</td>
-          <td>Adiaksa</td>
-          <td>089611112222</td>
-          <td>Jl. Raya Gubeng No. 9</td>
+          <td>{{ $loop->iteration }}</td>
+          <td>{{ $item->nama }}</td>
+          <td>{{ $item->telepon }}</td>
+          <td>{{ $item->alamat }}</td>
           <td>
-            <a href="#" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> </a>
-            <a href="#" class="btn btn-danger btn-sm"> <i class="fa-solid fa-trash"></i> </a>
+            <a href="/pembeli/edit/{{$item->id}}" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> </a>
+            <a href="/pembeli/hapus/{{$item->id}}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> </a>
           </td>
         </tr>
+        @endforeach
       </tbody>
     </table>
   </div>
@@ -47,17 +49,44 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">Tambah Pembeli</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Understood</button>
-      </div>
+        <form action="{{route('pembeli.store')}}" method="POST">
+          @csrf
+          <div class="form-group mb-3">
+            <label for="nama">Nama</label>
+            <input type="text" name="nama" id="nama" 
+            class="form-control @error('nama') is-invalid @enderror">
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="telepon">Telepon</label>
+            <input type="text" name="telepon" id="telepon" 
+            class="form-control @error('telepon') is-invalid @enderror">
+          </div>
+
+          <div class="form-group">
+            <label for="alamat">Alamat</label>
+            <textarea name="alamat" id="alamat" class="form-control"></textarea>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 @endsection
+
+@push('script')
+    <script>
+      
+    </script>
+@endpush
+
+

@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Pembeli extends Model
 {
     use HasFactory;
+    
+    protected $table = 'pembeli';
+
+    protected $guarded = [];
 }

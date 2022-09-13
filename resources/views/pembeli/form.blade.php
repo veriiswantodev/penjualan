@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('title')
-    Kategori
+    Pembeli
 @endsection
 
 @section('content')
@@ -11,13 +11,13 @@
       <h5>Edit Suplier</h5>
 
       <div class="card-body">
-        <form action="{{route('suplier.update', $suplier->id)}}" 
+        <form action="{{route('pembeli.update', $pembeli->id)}}" 
           method="POST">
           @csrf
           @method('PUT')
           <div class="form-group">
             <label for="nama">Nama</label>
-            <input type="text" name="nama" id="nama" value="{{$suplier->nama}}" class="form-control @error('nama') is-invalid @enderror">
+            <input type="text" name="nama" id="nama" value="{{$pembeli->nama}}" class="form-control @error('nama') is-invalid @enderror">
             @error('nama')
                 <div class="text-danger">
                   {{ $message }}
@@ -26,7 +26,7 @@
           </div>
           <div class="form-group">
             <label for="telepon">Telepon</label>
-            <input type="text" name="telepon" id="telepon" value="{{$suplier->telepon}}" class="form-control @error('telepon') is-invalid @enderror">
+            <input type="text" name="telepon" id="telepon" value="{{$pembeli->telepon}}" class="form-control @error('telepon') is-invalid @enderror">
             @error('telepon')
                 <div class="text-danger">
                   {{ $message }}
@@ -35,7 +35,7 @@
           </div>
           <div class="form-group">
             <label for="alamat">Alamat</label>
-            <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror">{{ $suplier->alamat }}</textarea>
+            <textarea name="alamat" id="alamat" class="form-control @error('alamat') is-invalid @enderror">{{ $pembeli->alamat }}</textarea>
             @error('alamat')
                 <div class="text-danger">
                   {{ $message }}

@@ -6,7 +6,8 @@ use App\Http\Controllers\{
     KategoriController,
     BarangController,
     SuplierController,
-    DashboardController
+    DashboardController,
+    PembeliController
 };
 
 Route::get('/', [DashboardController::class, 'index']);
@@ -23,10 +24,12 @@ Route::get('/kategori/hapus/{id}', [KategoriController::class, 'destroy']);
 
 Route::resource('/suplier', SuplierController::class);
 Route::get('/suplier/hapus/{id}', [SuplierController::class, 'destroy']);
+Route::get('/suplier/edit/{id}', [SuplierController::class, 'edit']);
 
-Route::get('/pembeli', function () {
-    return view('pembeli.index');
-});
+Route::resource('/pembeli', PembeliController::class);
+Route::get('/pembeli/hapus/{id}', [PembeliController::class, 'destroy']);
+Route::get('/pembeli/edit/{id}', [PembeliController::class, 'edit']);
+
 Route::get('/pembelian', function () {
     return view('pembelian.index');
 });
