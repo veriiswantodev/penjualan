@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\{
     KategoriController,
-    BarangController
+    BarangController,
+    SuplierController,
+    DashboardController
 };
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [DashboardController::class, 'index']);
 
 // Route Barang
 Route::resource('/barang', BarangController::class);
@@ -21,9 +21,9 @@ Route::resource('/kategori', KategoriController::class);
 Route::get('/kategori/edit/{id}', [KategoriController::class, 'edit']);
 Route::get('/kategori/hapus/{id}', [KategoriController::class, 'destroy']);
 
-Route::get('/suplier', function () {
-    return view('suplier.index');
-});
+Route::resource('/suplier', SuplierController::class);
+Route::get('/suplier/hapus/{id}', [SuplierController::class, 'destroy']);
+
 Route::get('/pembeli', function () {
     return view('pembeli.index');
 });

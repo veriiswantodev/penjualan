@@ -14,7 +14,8 @@ class SuplierController extends Controller
      */
     public function index()
     {
-        //
+        $suplier = Suplier::all();
+        return view('suplier.index', compact('suplier'));
     }
 
     /**
@@ -35,7 +36,14 @@ class SuplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $request->validate([
+            'nama' => 'required|max:255',
+            'telepon' => 'required|numeric',
+            'alamat' => 'required'
+        ]);
+        $kategori = Suplier::create($request->all());
+
+        return redirect('suplier',)->with('sukses', 'Data Berhasil disimpan!');
     }
 
     /**
@@ -78,8 +86,11 @@ class SuplierController extends Controller
      * @param  \App\Models\Suplier  $suplier
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Suplier $suplier)
+    public function destroy($id)
     {
-        //
+        $suplier = Suplier::find($id);
+        $suplier->delete();
+
+        return redirect('suplier');
     }
 }
