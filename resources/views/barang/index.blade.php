@@ -36,8 +36,8 @@
             <td>{{$item->nama}}</td>
             <td>{{$item->harga}}</td>
             <td>{{$item->stok}}</td>
-            <td>{{$item->suplier->nama}}</td>
-            <td>{{$item->kategori->nama}}</td>
+            <td>{{! empty($item->suplier->nama) ? $item->suplier->nama : ''}}</td>
+            <td>{{! empty($item->Kategori->nama) ? $item->Kategori->nama : ''}}</td>
             <td>
               <a href="/barang/{{$item->id}}/edit" class="btn btn-warning btn-sm"> <i class="fa fa-edit"></i> </a>
               <a href="/barang/{{$item->id}}/hapus" class="btn btn-danger btn-sm"> <i class="fa-solid fa-trash"></i> </a>

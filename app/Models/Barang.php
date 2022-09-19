@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Suplier;
 use App\Models\Kategori;
 use App\Models\Pembelian;
+use App\Models\Penjualan;
 
 class Barang extends Model
 {
@@ -26,5 +27,9 @@ class Barang extends Model
 
     public function pembelian(){
         return $this->hasMany(Pembelian::class);
+    }
+
+    public function penualan(){
+        return $this->hasMany(Penjualan::class);
     }
 }

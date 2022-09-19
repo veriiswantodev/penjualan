@@ -60,7 +60,7 @@
           <div class="form-group">
             <label for="suplier" class="form-label">Suplier</label>
             <select name="suplier_id" id="suplier_id" class="form-control @error('suplier_id') is-invalid @enderror">
-              <option value="{{$b->suplier_id}}" selected>{{$b->suplier->nama}}</option>
+              <option value="{{$b->suplier_id}}" selected>{{! empty($b->suplier->nama) ? $b->suplier->nama : ''}}</option>
               @foreach ($suplier as $s)
                   <option value="{{$s->id}}">{{$s->nama}}</option>
               @endforeach
